@@ -20,7 +20,7 @@ class Category(BaseModel):
 class FavoriteThing(BaseModel):
     title = models.CharField(max_length=30)
     description = models.TextField(blank=True, null=True)
-    ranking = models.IntegerField()
+    ranking = models.IntegerField(null=True)
     metadata = JSONField(blank=True, null=True)
     category = models.ForeignKey(Category, related_name='favorite_things', on_delete=models.CASCADE)
     history = AuditlogHistoryField(pk_indexable=False)
