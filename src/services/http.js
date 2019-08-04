@@ -8,10 +8,10 @@ axios.interceptors.response.use(
   },
   function (error) {
     // Network error
-    if (!error.status) {
+    if (!error.response) {
       toast('Network error! Please check your internet connection.', 'error');
     }
-
+    
     return Promise.reject(error);
   }
 );

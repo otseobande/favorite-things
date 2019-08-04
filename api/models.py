@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.postgres.fields import JSONField
+from django.contrib.postgres.fields import JSONField, CICharField
 from auditlog.registry import auditlog
 from auditlog.models import AuditlogHistoryField
 import uuid
@@ -15,7 +15,7 @@ class BaseModel(models.Model):
         abstract = True
 
 class Category(BaseModel):
-    name = models.CharField(max_length=30, unique=True)
+    name = CICharField(max_length=30, unique=True)
 
 class FavoriteThing(BaseModel):
     title = models.CharField(max_length=30)
@@ -23,7 +23,6 @@ class FavoriteThing(BaseModel):
     ranking = models.IntegerField(null=True)
     metadata = JSONField(blank=True, null=True)
     category = models.ForeignKey(Category, related_name='favorite_things', on_delete=models.CASCADE)
-    history = AuditlogHistoryField(pk_indexable=False)
 
     class Meta:
         ordering = ('ranking', )

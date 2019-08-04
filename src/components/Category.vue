@@ -8,14 +8,14 @@
     bg-gray-500
     rounded
     text-gray-100
-    font-bold
     category`"
   >
     <div :class="`
       sticky
       bg-gray-500
       pt-4
-      px-4
+      pl-4
+      pr-3
       top-0
       m-0
       mb-3
@@ -30,15 +30,18 @@
           <CloseIcon class="fill-current w-4" />
         </button>
       </div>
-      <t-input
-        v-else
-        v-model="newCategoryName"
-        class="h-8 bg-transparent border-white text-gray-800 w-full text-sm"
-        placeholder="Enter new category name"
-        @blur="handleNewCategoryInputBlur"
-        @keyup.enter="$event.target.blur()"
-        autofocus
-      />
+      <div v-else>
+        <label class="text-sm">Category name</label>
+        <t-input
+          v-model="newCategoryName"
+          class="h-8 bg-white border-white text-gray-800 w-full text-sm"
+          placeholder="Enter new category name"
+          @blur="handleNewCategoryInputBlur"
+          @keyup.enter="$event.target.blur()"
+          ref="newCategoryInput"
+          autofocus
+        />
+      </div>
     </div>
       <div class="w-full px-2">
         <draggable
@@ -65,129 +68,45 @@
     <div v-if="category.name" class="bg-gray-500 sticky bottom-0">
       <button
         class="bottom-0 outline-none mt-3 p-3 py-3 hover:bg-gray-600 cursor-pointer font-bold w-full px-2 py-1 rounded"
-        @click="$refs.modal.show()"
+        @click="showNewFavoriteThingModal = true"
       >
         <img width="20" class="inline" src="../assets/add-icon-white.svg" />
-        <span class="ml-2">
-          Add favorite <span class="lowercase">{{category.name}}</span>
+        <span class="ml-2 font-bold">
+          Add favorite <span class="lowercase">{{singularizedCategoryName}}</span>
         </span>
         <!-- Icons made by https://www.flaticon.com/authors/hanan from https://www.flaticon.com/ -->
       </button>
     </div>
-    <t-modal ref="modal" closeIconClass="text-gray-300 w-8 right-0 mt-2 mr-6 absolute">
-      <div class="text-gray-700">
-        <h2 class="text-lg">
-           Add new favorite <span class="lowercase">{{category.name}}</span>
-        </h2>
-        <form class="mt-5" @submit.prevent="handleAddFavoriteThing">
-          <div>
-            <label>Title <span class="text-red-500">*</span></label>
-            <t-input
-              v-model="$v.newFavoriteThing.title.$model"
-              name="title"
-              class="h-10 w-full"
-              :status="!$v.newFavoriteThing.title.$dirty
-                ? 'default'
-                : $v.newFavoriteThing.title.required"
-              :placeholder="`Enter favorite ${category.name} title`"
-            />
-            <span
-              v-if="$v.newFavoriteThing.title.$dirty && !$v.newFavoriteThing.title.required"
-              class="text-sm text-red-500"
-            >
-              Title is required
-            </span>
-          </div>
-          <div class="mt-2">
-            <label>Description</label>
-            <t-textarea
-             v-model="$v.newFavoriteThing.description.$model"
-              class="w-full"
-              name="description"
-              :status="$v.newFavoriteThing.description.$dirty || 'default'"
-              :placeholder="`Describe favorite ${category.name}`"
-            />
-          </div>
-          <div class="mt-2">
-            <label>Ranking <span class="text-red-500">*</span></label>
-            <div>
-              <t-input
-                v-model="$v.newFavoriteThing.ranking.$model"
-                class="h-10 mr-0 inline"
-                name="ranking"
-                type="number"
-                min="1"
-                :max="`${this.category.favorite_things.length + 1}`"
-                :status="!$v.newFavoriteThing.ranking.$dirty
-                  ? 'default'
-                  : (
-                    $v.newFavoriteThing.ranking.required &&
-                    $v.newFavoriteThing.ranking.betweenRanking
-                  )"
-              />
-              <small class="ml-2 capitalize">{{rankingInfo}}</small>
-            </div>
-            <div v-if="$v.newFavoriteThing.ranking.$dirty">
-              <div
-                v-if="!$v.newFavoriteThing.ranking.required"
-                class="text-sm text-red-500"
-              >
-                Ranking is required
-              </div>
-              <div
-                v-if="!$v.newFavoriteThing.ranking.betweenRanking"
-                class="text-sm text-red-500"
-              >
-                Ranking is out of range
-              </div>
-            </div>
-          </div>
-          <div class="mt-6 flex">
-            <t-button
-              :disabled="submittingAddFavoriteThingForm"
-              variant="primary"
-              size="sm"
-              class="mr-2 font-bold"
-              type='submit'
-            >
-              <span v-if="submittingAddFavoriteThingForm">
-                <img src="../assets/spinner.svg" width="25">
-              </span>
-              <span v-else>
-                Add favorite<span class="lowercase">&nbsp;{{category.name}}</span>
-              </span>
-            </t-button>
-            <t-button size="sm" class="font-bold" @click="closeModal">
-              Cancel
-            </t-button>
-          </div>
-        </form>
-      </div>
-    </t-modal>
+    <NewFavoriteThingModal
+      :show="showNewFavoriteThingModal"
+      :category="category"
+      :singularizedCategoryName="singularizedCategoryName"
+      @close="showNewFavoriteThingModal = false"
+    />
     <t-modal ref="categoryDeleteModal" closeIconClass="text-gray-300 w-8 right-0 mt-2 mr-6 absolute" class="h-30">
       <div class="text-gray-700">
         <div class="text-lg mt-16 text-center">
-           <h2>Add you sure you want to delete {{category.name}}?</h2>
+           <h2 class="font-bold mb-4">Add you sure you want to delete {{category.name}}?</h2>
            <p>Deleting a category would delete all the favorite items in that category.</p>
         </div>
-          <div class="mt-6 flex justify-center">
-            <div>
-              <t-button
-                variant="danger"
-                size="sm"
-                class="mr-2 font-bold"
-                type='submit'
-                @click="deleteCategory"
-              >
-                <span>
-                  Delete
-                </span>
-              </t-button>
-              <t-button size="sm" class="font-bold" @click="closeConfirmDeleteModal">
-                Cancel
-              </t-button>
-            </div>
+        <div class="mt-6 flex justify-center">
+          <div>
+            <t-button
+              variant="danger"
+              size="sm"
+              class="mr-2 font-bold"
+              type='submit'
+              @click="deleteCategory"
+            >
+              <span>
+                Delete
+              </span>
+            </t-button>
+            <t-button size="sm" class="font-bold" @click="closeConfirmDeleteModal">
+              Cancel
+            </t-button>
           </div>
+        </div>
       </div>
     </t-modal>
   </div>
@@ -199,18 +118,30 @@ import { mapActions } from 'vuex';
 import * as actionTypes from '../store/actions.type';
 
 import draggable from 'vuedraggable';
-import { required } from 'vuelidate/lib/validators';
+import { required, minLength, maxLength } from 'vuelidate/lib/validators';
+import Tense from 'tense';
+import toast from 'toast-me';
 
 // components
 import FavoriteThing from './FavoriteThing.vue';
 import CloseIcon from './CloseIcon.vue';
+import AdditionalInformation from './AdditionalInformation.vue';
+import NewFavoriteThingModal from './NewFavoriteThingModal.vue';
 
 export default {
   props: ['category'],
+  components: {
+    FavoriteThing,
+    draggable,
+    CloseIcon,
+    AdditionalInformation,
+    NewFavoriteThingModal
+  },
   data() {
     return {
       showModal: false,
-      newFavoriteThing: this.getInitialNewFavoriteThing(),
+      showNewFavoriteThingModal: false,
+      newFavoriteThing: {},
       dragOptions: {
         animation: 200,
         group: "description",
@@ -218,47 +149,15 @@ export default {
         ghostClass: "ghost"
       },
       drag: false,
-      submittingAddFavoriteThingForm: false,
-      newCategoryName: ''
-    }
-  },
-  validations: {
-    newFavoriteThing: {
-      title: {
-        required,
-      },
-      description: {
-
-      },
-      ranking: {
-        required,
-        betweenRanking: function(ranking) {
-          return (
-            ranking >= 1 &&
-            ranking <= this.category.favorite_things.length + 1);
-        }
-      }
+      newCategoryName: '',
     }
   },
   methods: {
     ...mapActions([
-      actionTypes.ADD_FAVORITE_THING,
-      actionTypes.UPDATE_FAVORITE_THING,
       actionTypes.DELETE_DUMMY_CATEGORY,
       actionTypes.ADD_CATEGORY,
       actionTypes.DELETE_CATEGORY
     ]),
-    async handleAddFavoriteThing() {
-      this.submittingAddFavoriteThingForm = true;
-      if(this.$v.newFavoriteThing.$invalid) {
-        this.submittingAddFavoriteThingForm = false;
-        return this.$v.newFavoriteThing.$touch();
-      }
-
-      await this[actionTypes.ADD_FAVORITE_THING](this.newFavoriteThing);
-      this.submittingAddFavoriteThingForm = false;
-      this.closeModal();
-    },
     handleFavoriteThingChange(event) {
       if(event.moved) {
         this[actionTypes.UPDATE_FAVORITE_THING]({
@@ -270,12 +169,19 @@ export default {
       }
     },
     async handleNewCategoryInputBlur() {
-      if(this.newCategoryName) {
-        await this[actionTypes.ADD_CATEGORY]({
-          name: this.newCategoryName
-        });
-        this[actionTypes.DELETE_DUMMY_CATEGORY]()
-      } else {
+      try{
+        if(this.newCategoryName) {
+          await this[actionTypes.ADD_CATEGORY]({
+            name: this.newCategoryName
+          });
+        }
+      } catch (error) {
+        if (error.response.status === 400) {
+          if (error.response.data.name) {
+            toast(error.response.data.name[0], 'error');
+          }
+        }
+      } finally {
         this[actionTypes.DELETE_DUMMY_CATEGORY]();
       }
     },
@@ -291,45 +197,17 @@ export default {
         categoryId: this.category.id
       });
     },
-    getInitialNewFavoriteThing() {
-      return {
-        title: '',
-        description: '',
-        category: this.category.id,
-        ranking: this.category.favorite_things.length + 1
-      }
-    },
-    closeModal() {
-      this.$refs.modal.hide();
-      this.newFavoriteThing = this.getInitialNewFavoriteThing();
-      this.$v.newFavoriteThing.$reset()
-    }
   },
   computed: {
-    rankingInfo () {
-      if (this.newFavoriteThing.ranking === 1) {
-        return 'Favorite'
-      }
-
-      if (this.newFavoriteThing.ranking >= 1 &&
-        this.newFavoriteThing.ranking <= this.category.favorite_things.length) {
-          const favoriteThingInPostion = this.category.favorite_things[
-            this.newFavoriteThing.ranking - 1];
-
-          return `Rank above ${favoriteThingInPostion.title}`
-      }
-
-      if (this.newFavoriteThing.ranking === this.category.favorite_things.length + 1) {
-        return 'Least favorite'
-      }
-
-      return '';
+    singularizedCategoryName() {
+      const tense = new Tense()
+      return tense.singularize(this.category.name)
     }
   },
-  components: {
-    FavoriteThing,
-    draggable,
-    CloseIcon
+  mounted() {
+    if(this.$refs.newCategoryInput) {
+      this.$refs.newCategoryInput.focus()
+    }
   }
 }
 </script>
@@ -340,6 +218,9 @@ export default {
   min-width: 262px;
 }
 
+.type-select > select {
+  height: 2.5rem;
+}
 .flip-list-move {
   transition: transform 0.5s;
 }

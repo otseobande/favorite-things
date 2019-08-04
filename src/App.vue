@@ -8,7 +8,7 @@
       </div>
       <div v-else class="flex flex-row items-start pt-10 mb-10 pr-10">
         <Category v-for="category in categories" :key="category.id" :category="category" />
-        <div :class="`
+        <button @click="addDummyCategory" :class="`
           h-12
           max-h-full
           w-64
@@ -22,12 +22,11 @@
           font-bold
           cursor-pointer
           outline-none
-          category`">
-          <button @click="addDummyCategory">
-            <img width="20" class="inline mr-3" src="./assets/add-icon-white.svg" />
-            <span class="font-bold">Add new category</span>
-          </button>
-        </div>
+          category`"
+        >
+          <img width="20" class="inline mr-3" src="./assets/add-icon-white.svg" />
+          <span class="font-bold">Add new category</span>
+        </button>
       </div>
     </div>
   </div>
@@ -72,9 +71,7 @@ export default {
       this.fetchingCategories = true;
 
       this[actionTypes.FETCH_CATEGORIES]();
-
-      this.fetchingCategories = false;
-    } catch (error) {
+    } finally {
       this.fetchingCategories = false;
     }
   }
