@@ -17,7 +17,7 @@
       `"
       @click="openDetailsModal"
     >
-      <span class="m-0 inline capitalize">
+      <span class="m-0 inline capitalize font-bold">
         {{index + 1}}. {{favoriteThing.title}}
       </span>
       <button @click.stop.prevent="confirmDelete" class="p-1 text-center">
@@ -29,34 +29,42 @@
       closeIconClass="text-gray-300 w-8 right-0 mt-2 mr-6 absolute"
     >
       <div class="text-gray-700 flex flex-col">
-        <t-input
-          name="title"
-          class="h-10 w-full"
-          v-if="editting.title"
-          @blur="editting.title = false"
-          ref='titleInput'
-          autofocus
-        />
-        <h2 v-else class="text-2xl capitalize" @click="switchToInput">
-          {{favoriteThing.title}}
+        <h2 class="text-2xl capitalize font-bold">
+          {{favoriteThing.title}} <button class="ml-3"><Pencil class="h-4 w-4 inline"/></button>
         </h2>
+
         <small class="text-gray-600">in category {{categoryName}}</small>
         <div class="mt-4">
-          <h3 class="text-lg">Description</h3>
-          <p>
+          <h3 class="text-lg font-bold">Description</h3>
+          <div>
             <div v-if="favoriteThing.description" class="description">
               {{favoriteThing.description}}
             </div>
             <div v-else class="text-sm italic text-gray-500">
               Not provided
             </div>
-          </p>
+          </div>
         </div>
         <div class="mt-3">
-          <h3 class="text-lg">Ranking</h3>
+          <h3 class="text-lg font-bold">Ranking</h3>
           <p>
             {{rankingWithOrdinal}}
           </p>
+        </div>
+        <div v-if="metadata">
+          <div class="mt-3" v-for="(data, index) in metadata" :key="index">
+            <h3 class="text-lg font-bold">{{data.label}}</h3>
+            <p v-if="Array.isArray(data.value)">
+              <ul class="list-disc pl-8">
+                <li v-for="(value, index) in data.value" :key="index">
+                  {{value}}
+                </li>
+              </ul>
+            </p>
+            <p v-else>
+              {{data.value}}
+            </p>
+          </div>
         </div>
       </div>
     </t-modal>
@@ -95,6 +103,9 @@ import toast from 'toast-me';
 
 import getNumberWithOrdinal from '../utils/getNumberWithOrdinal';
 
+// components
+import Pencil from './Pencil.vue';
+
 export default {
   props: [
     'favoriteThing',
@@ -110,6 +121,9 @@ export default {
         ranking: false
       }
     }
+  },
+  components: {
+    Pencil
   },
   methods: {
     ...mapActions([
@@ -127,10 +141,6 @@ export default {
     closeDetailsModal() {
       this.$refs.detailsModal.hide()
     },
-    switchToInput() {
-      this.editting.title = true;
-      this.$refs.titleInput.focus()
-    },
     async deleteFavoriteThing(){
       this.closeConfirmDeleteModal();
       await this[actionTypes.DELETE_FAVORITE_THING]({
@@ -143,6 +153,13 @@ export default {
   computed: {
     rankingWithOrdinal () {
       return getNumberWithOrdinal(this.favoriteThing.ranking)
+    },
+    metadata () {
+      if (typeof(this.favoriteThing.metadata) === 'object') {
+        return this.favoriteThing.metadata;
+      }
+
+      return JSON.parse(this.favoriteThing.metadata);
     }
   }
 }

@@ -94,6 +94,7 @@ class CategorySerializer(serializers.ModelSerializer):
     favorite_things = FavoriteThingSerializer(
         many=True,
         read_only=True)
+
     class Meta:
         model = models.Category
         fields = '__all__'
