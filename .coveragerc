@@ -1,0 +1,9 @@
+[run]
+omit = */tests/*, */migrations/*, */urls.py, */settings/*, */wsgi.py, manage.py, fabfile.py, api/apps.py
+source =
+  api/*
+  favoritethings/*
+
+
+[report]
+show_missing = true

@@ -12,13 +12,14 @@ class FavoriteThingSerializer(serializers.ModelSerializer):
     history = LogEntrySerializer(many=True, read_only=True)
 
     def create(self, validated_data):
-        target_ranking = validated_data['ranking']
         category = validated_data['category']
         max_ranking = models.FavoriteThing.objects.filter(
             category=category
         ).count()
 
         if 'ranking' in validated_data:
+            target_ranking = validated_data['ranking']
+
             if target_ranking < 1 or target_ranking > max_ranking + 1:
                 raise serializers.ValidationError(
                     {
@@ -136,11 +137,7 @@ class CategorySerializer(serializers.ModelSerializer):
     favorite_things = FavoriteThingSerializer(
         many=True,
         read_only=True)
-
     history = LogEntrySerializer(many=True, read_only=True)
-
-    def get_history(self, obj):
-        return json.dumps(obj.history.all())
 
 
     class Meta:

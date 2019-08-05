@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should match snapshot 1`] = `
+<div class="container pt-4 text-lg text-white">
+  <h2 class="sticky left-0 pl-2 font-extrabold text-2xl inline">
+    Favorite Things! <img src="../assets/happy.svg" width="30" class="inline"></h2>
+</div>
+`;

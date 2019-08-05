@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  props: ['show'],
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    }
+  },
   watch: {
     '$props.show': function (newValue) {
       if (newValue) {

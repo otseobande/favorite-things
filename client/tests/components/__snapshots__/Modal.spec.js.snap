@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component should match snapshot 1`] = `<t-modal-stub clicktoclose="true" esctoclose="true" width="600" height="300" pivoty="0.1" baseclass="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed" overlayclass="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-black opacity-75" containerclass="z-50 relative p-3 mx-auto my-0 max-w-full" wrapperclass="bg-white rounded shadow-lg border flex flex-col overflow-hidden" bodyclass="p-6 flex-grow" headerclass="px-6 py-3 text-xl border-b" footerclass="px-6 py-3 border-t" closeiconclass="text-gray-300 w-8 right-0 mt-2 mr-6 absolute"></t-modal-stub>`;
+
+exports[`Modal component should match snapshot if show is false 1`] = ``;
+
+exports[`Modal component should match snapshot if show is true 1`] = `
+<div tabindex="0" class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed">
+  <div class="z-50 relative p-3 mx-auto my-0 max-w-full" style="width: 600px;">
+    <div class="bg-white rounded shadow-lg border flex flex-col overflow-hidden" style="min-height: 300px;"><button class="text-gray-300 w-8 right-0 mt-2 mr-6 absolute"><svg role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <title>close</title>
+          <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"></path>
+        </svg></button>
+      <!---->
+      <div class="p-6 flex-grow"></div>
+      <!---->
+    </div>
+  </div>
+  <div class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-black opacity-75"></div>
+</div>
+`;
