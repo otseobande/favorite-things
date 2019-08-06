@@ -10,4 +10,6 @@ rm -rf htmlcov .coverage ./client/coverage
 
 pip uninstall -y codecov coverage django-nose pytest
 
+pip freeze > requirements.txt
+
 zappa update
