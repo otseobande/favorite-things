@@ -29,6 +29,7 @@ script:
   - cd ./client && npm install && npm run test -- -u
 
 deploy:
+  skip_cleanup: true
   provider: script
   script: sh $TRAVIS_BUILD_DIR/scripts/deploy.sh
   on:
