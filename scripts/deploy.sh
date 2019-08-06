@@ -2,4 +2,4 @@
 
 echo ${env_file} | base64 -d > .env
 
-zappa update
+cd ../ && zappa update
