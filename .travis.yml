@@ -5,35 +5,29 @@ language: python
 python:
   - "3.6"
 
-services:
-  - postgresql
-addons:
-  postgresql: "11.2"
+jobs:
+  include:
+    - stage: test
+      before_install:
+        - sudo apt-get update
+        - sudo apt-get --yes remove postgresql\*
+        - sudo apt-get install -y postgresql-11 postgresql-client-11
+        - sudo cp /etc/postgresql/{9.6,11}/main/pg_hba.conf
+        - sudo service postgresql restart 11
+      install:
+        - pip install -r requirements.txt
+        - pip install codecov
+      before_script:
+        - psql -c 'create database favorite_things_test;' -U postgres
+      script:
+        - pytest
+        - cd ./client && npm install && npm run test -- -u
+      services:
+        - postgresql
+      addons:
+        postgresql: "11.2"
+      after_success:
+        - codecov
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get --yes remove postgresql\*
-  - sudo apt-get install -y postgresql-11 postgresql-client-11
-  - sudo cp /etc/postgresql/{9.6,11}/main/pg_hba.conf
-  - sudo service postgresql restart 11
-
-install:
-  - pip install -r requirements.txt
-  - pip install codecov
-
-before_script:
-  - psql -c 'create database favorite_things_test;' -U postgres
-
-script:
-  - pytest
-  - cd ./client && npm install && npm run test -- -u
-
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: sh $TRAVIS_BUILD_DIR/scripts/deploy.sh
-  on:
-    branch: setup-deployment
-
-after_success:
-  - codecov
+    - stage: deploy
+      script: sh $TRAVIS_BUILD_DIR/scripts/deploy.sh
