@@ -1,7 +1,9 @@
 # Favorite Things! 🙂
-[![Build Status](https://travis-ci.com/otseobande/favorite-things.svg?branch=master)](https://travis-ci.com/otseobande/favorite-things) [![codecov](https://codecov.io/gh/otseobande/favorite-things/branch/master/graph/badge.svg)](https://codecov.io/gh/otseobande/favorite-things)
+[![Build Status](https://travis-ci.com/otseobande/favorite-things.svg?branch=master)](https://travis-ci.com/otseobande/favorite-things) [![codecov](https://codecov.io/gh/otseobande/favorite-things/branch/master/graph/badge.svg)](https://codecov.io/gh/otseobande/favorite-things) [![Netlify Status](https://api.netlify.com/api/v1/badges/01276058-5a4f-431f-a750-18e6b345ac9b/deploy-status)](https://app.netlify.com/sites/favorite-things/deploys)
 
 An application to help you track your favorite things.
+
+[View application](https://favorite-things.netlify.com)
 
 ## Getting Started
 

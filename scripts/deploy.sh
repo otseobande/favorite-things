@@ -8,4 +8,6 @@ find . -name '*.pyc' -delete
 
 rm -rf htmlcov .coverage ./client/coverage
 
+pip uninstall codecov
+
 zappa update
