@@ -1,0 +1,19 @@
+language: python
+
+python:
+  - "3.6"
+
+services:
+  - postgresql
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - psql -c 'create database favorite_things_test;' -U postgres
+
+script:
+  - pytest
+  - cd ./client
+  - npm install
+  - npm run test
