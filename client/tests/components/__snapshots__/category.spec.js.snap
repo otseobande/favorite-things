@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category component should match snapshot 1`] = `
+<div class="
+  max-h-screen
+  min-h-10
+  overflow-auto
+  m-0
+  mr-4
+  bg-gray-500
+  rounded
+  text-gray-100
+  category">
+  <div class="
+    sticky
+    bg-gray-500
+    pt-4
+    pl-4
+    pr-3
+    top-0
+    m-0
+    mb-3
+    font-extrabold
+    text-xl
+    capitalize
+    category-title">
+    <div class="flex justify-between"><span>
+        Test category
+      </span> <button class="p-2">
+        <closeicon-stub class="fill-current w-4"></closeicon-stub>
+      </button></div>
+  </div>
+  <div class="w-full px-2">
+    <draggable-stub list="[object Object]" clone="function(t){return t}" element="div" group="categories" animation="200" ghostclass="ghost"><span type="transition" name="flip-list"><favoritething-stub favoritething="[object Object]" index="0" category="[object Object]" singularizedcategoryname="Test category" categoryname="Test category"></favoritething-stub></span></draggable-stub>
+  </div>
+  <div class="bg-gray-500 sticky bottom-0"><button class="bottom-0 outline-none mt-3 p-3 py-3 hover:bg-gray-600 cursor-pointer font-bold w-full px-2 py-1 rounded"><img width="20" src="../assets/add-icon-white.svg" class="inline"> <span class="ml-2 font-bold">
+        Add favorite <span class="lowercase">Test category</span></span></button></div>
+  <modal-stub>
+    <newfavoritething-stub category="[object Object]" singularizedcategoryname="Test category"></newfavoritething-stub>
+  </modal-stub>
+  <t-modal-stub clicktoclose="true" esctoclose="true" width="600" height="300" pivoty="0.1" baseclass="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed" overlayclass="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-black opacity-75" containerclass="z-50 relative p-3 mx-auto my-0 max-w-full" wrapperclass="bg-white rounded shadow-lg border flex flex-col overflow-hidden" bodyclass="p-6 flex-grow" headerclass="px-6 py-3 text-xl border-b" footerclass="px-6 py-3 border-t" closeiconclass="text-gray-300 w-8 right-0 mt-2 mr-6 absolute" class="h-30">
+    <div class="text-gray-700">
+      <div class="text-lg mt-16 text-center">
+        <h2 class="font-bold mb-4">Add you sure you want to delete Test category?</h2>
+        <p>Deleting a category would delete all the favorite items in that category.</p>
+      </div>
+      <div class="mt-6 flex justify-center">
+        <div>
+          <t-button-stub tagname="button" type="submit" variant="danger" size="sm" activeclass="router-link-active" exactactiveclass="router-link-exact-active" baseclass="border block rounded inline-flex items-center justify-center" defaultclass="bg-white border-gray-400 hover:bg-gray-100 hover:border-gray-500" primaryclass="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600" secondaryclass="border-blue-500 text-blue-500 bg-white hover:border-blue-600 hover:text-blue-600 hover:bg-white" tertiaryclass="border block underline text-blue-500 border-transparent bg-transparent hover:text-blue-600" successclass="text-white bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600" dangerclass="text-white bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600" warningclass="text-yellow-900 bg-yellow-500 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600" disabledclass="cursor-not-allowed opacity-75" defaultsizeclass="px-6 py-3" largesizeclass="px-8 py-4 text-lg" smallsizeclass="px-4 py-2 text-sm" class="mr-2 font-bold"><span>
+              Delete
+            </span></t-button-stub>
+          <t-button-stub tagname="button" type="button" size="sm" activeclass="router-link-active" exactactiveclass="router-link-exact-active" baseclass="border block rounded inline-flex items-center justify-center" defaultclass="bg-white border-gray-400 hover:bg-gray-100 hover:border-gray-500" primaryclass="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600" secondaryclass="border-blue-500 text-blue-500 bg-white hover:border-blue-600 hover:text-blue-600 hover:bg-white" tertiaryclass="border block underline text-blue-500 border-transparent bg-transparent hover:text-blue-600" successclass="text-white bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600" dangerclass="text-white bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600" warningclass="text-yellow-900 bg-yellow-500 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600" disabledclass="cursor-not-allowed opacity-75" defaultsizeclass="px-6 py-3" largesizeclass="px-8 py-4 text-lg" smallsizeclass="px-4 py-2 text-sm" class="font-bold">
+            Cancel
+          </t-button-stub>
+        </div>
+      </div>
+    </div>
+  </t-modal-stub>
+</div>
+`;

@@ -24,16 +24,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "babel-core": "^6.26.3",
-    "babel-env": "^2.4.1",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
-    "babel-preset-env": "^1.7.0",
     "eslint": "^5.16.0",
     "eslint-config-eslint": "^5.0.1",
     "eslint-plugin-jest": "^22.14.1",
@@ -69,14 +70,19 @@
       "vue"
     ],
     "transform": {
-      "^.+\\.js$": "babel-jest",
-      ".*\\.(vue)$": "vue-jest"
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,vue}",
       "!**/node_modules/**",
-      "!**/coverage/**"
+      "!**/coverage/**",
+      "!src/store/index.js",
+      "!src/main.js"
     ],
     "coverageReporters": [
       "html",

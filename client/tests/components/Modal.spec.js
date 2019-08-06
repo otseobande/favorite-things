@@ -1,5 +1,5 @@
 import { mount, shallowMount, createLocalVue} from '@vue/test-utils';
-import Modal from '../src/components/Modal.vue';
+import Modal from '../../src/components/Modal.vue';
 import VueTailwind from 'vue-tailwind';
 
 const localVue = createLocalVue()

@@ -62,13 +62,18 @@
 
 <script>
 import CloseIcon from './CloseIcon.vue';
-import TagsInput from '@voerro/vue-tagsinput';
+import TagsInput from '@voerro/vue-tagsinput/dist/voerro-vue-tagsinput.js';
 
 export default {
-  props: [
-    'currentMetadata',
-    'editting'
-  ],
+  props: {
+    currentMetadata: {
+      type: [Array, String]
+    },
+    editting: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     CloseIcon,
     TagsInput

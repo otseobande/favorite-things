@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils';
-import Pencil from '../src/components/Pencil.vue';
+import { shallowMount } from '@vue/test-utils';
+import Pencil from '../../src/components/Pencil.vue';
 
 describe('Pencil component', () => {
   it('should match snapshot', () => {
-    const wrapper = mount(Pencil);
+    const wrapper = shallowMount(Pencil);
 
     expect(wrapper).toMatchSnapshot();
   });

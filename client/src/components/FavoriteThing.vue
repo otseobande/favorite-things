@@ -47,7 +47,7 @@
           </button>
         </div>
 
-        <small class="text-gray-600">in category {{categoryName}}</small>
+        <small class="text-gray-600">in category {{category.name}}</small>
         <div class="mt-4">
           <h3 class="text-lg font-bold">Description</h3>
           <div>
@@ -140,13 +140,24 @@ import Pencil from './Pencil.vue';
 import NewFavoriteThing from './NewFavoriteThing.vue'
 
 export default {
-  props: [
-    'favoriteThing',
-    'index',
-    'categoryName',
-    'category',
-    'singularizedCategoryName'
-  ],
+  props: {
+    favoriteThing: {
+      required: true,
+      type: Object
+    },
+    index: {
+      required: true,
+      type: Number
+    },
+    category: {
+      required: true,
+      type: Object
+    },
+    singularizedCategoryName: {
+      required: true,
+      type: String
+    }
+  },
   data() {
     return {
       showConfirmDeleteModal: false,
@@ -191,14 +202,14 @@ export default {
         let seperator = '';
 
         if (index < arr.length - 2) {
-          seperator = ' , ';
+          seperator = ', ';
         } else if (index === arr.length - 2) {
           seperator = ' and ';
         } else if (index === arr.length - 1) {
           seperator = '.'
         }
 
-        return `${acc}${key} from ${change[0]} to ${change[1]}${seperator} `
+        return `${acc}${key} from ${change[0]} to ${change[1]}${seperator}`
       }, 'Changed ');
 
       return changesString;
