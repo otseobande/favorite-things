@@ -70,7 +70,7 @@ export default {
     try{
       this.fetchingCategories = true;
 
-      this[actionTypes.FETCH_CATEGORIES]();
+      await this[actionTypes.FETCH_CATEGORIES]();
     } finally {
       this.fetchingCategories = false;
     }

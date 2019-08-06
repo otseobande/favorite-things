@@ -18,7 +18,7 @@
           name="title"
           class="h-10 w-full"
           :status="!$v.newFavoriteThing.title.$dirty
-            ? 'default'
+            ? null
             : $v.newFavoriteThing.title.required && $v.newFavoriteThing.title.maxLength"
           :placeholder="`Enter favorite ${singularizedCategoryName} title`"
         />
@@ -45,7 +45,7 @@
           class="w-full"
           name="description"
           :status="!$v.newFavoriteThing.description.$dirty ?
-            'default' :
+            null :
             $v.newFavoriteThing.description.minLength"
           :placeholder="`Describe favorite ${singularizedCategoryName}`"
         />
@@ -68,7 +68,7 @@
             min="1"
             :max="`${this.category.favorite_things.length + 1}`"
             :status="!$v.newFavoriteThing.ranking.$dirty
-              ? 'default'
+              ? null
               : (
                 $v.newFavoriteThing.ranking.required &&
                 $v.newFavoriteThing.ranking.betweenRanking
@@ -148,13 +148,27 @@ import { required, minLength, maxLength } from 'vuelidate/lib/validators';
 import AdditionalInformation from './AdditionalInformation.vue';
 
 export default {
-  props: [
-    'category',
-    'show',
-    'singularizedCategoryName',
-    'favoriteThing',
-    'editting'
-  ],
+  props: {
+    category: {
+      type: Object,
+      required: true
+    },
+    show: {
+      type: Boolean,
+      default: false
+    },
+    singularizedCategoryName: {
+      type: String,
+      required: true
+    },
+    favoriteThing: {
+      type: Object,
+    },
+    editting: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       newFavoriteThing: this.getInitialNewFavoriteThing(),
@@ -271,33 +285,32 @@ export default {
   },
   computed: {
     rankingInfo () {
-      if(this.newFavoriteThing) {
-        const currentRanking = Number(this.newFavoriteThing.ranking);
-        if (currentRanking === 1) {
-          return `Rank as favorite ${this.singularizedCategoryName}`
-        }
+      const currentRanking = Number(this.newFavoriteThing.ranking);
+      
+      if (currentRanking === 1) {
+        return `Rank as favorite ${this.singularizedCategoryName}`
+      }
 
-        if (
-          this.favoriteThing &&
-          this.favoriteThing.ranking === currentRanking
-        ) {
-          return ''
-        }
+      if (
+        this.favoriteThing &&
+        this.favoriteThing.ranking === currentRanking
+      ) {
+        return ''
+      }
 
-        if (
-          currentRanking >= 1 &&
-          currentRanking <= this.category.favorite_things.length
-        ) {
-            const newFavoriteThingInPostion = this.category.favorite_things[
-              this.newFavoriteThing.ranking - 1
-            ];
+      if (
+        currentRanking >= 1 &&
+        currentRanking <= this.category.favorite_things.length
+      ) {
+          const newFavoriteThingInPostion = this.category.favorite_things[
+            this.newFavoriteThing.ranking - 1
+          ];
 
-            return `Rank above ${newFavoriteThingInPostion.title}`
-        }
+          return `Rank above ${newFavoriteThingInPostion.title}`
+      }
 
-        if (currentRanking === this.category.favorite_things.length + 1) {
-          return `Rank as least favorite ${this.singularizedCategoryName}`
-        }
+      if (currentRanking === this.category.favorite_things.length + 1) {
+        return `Rank as least favorite ${this.singularizedCategoryName}`
       }
 
       return '';

@@ -61,8 +61,17 @@ export default {
     commit(mutationTypes.DELETE_CATEGORY, categoryId);
   },
 
-  async [actionTypes.UPDATE_CATEGORY]({ commit }, { categoryId, updatedCategoryData}) {
-    const response = await categoryService.update({ categoryId, updatedCategoryData });
+  async [actionTypes.UPDATE_CATEGORY](
+    { commit },
+    {
+      categoryId,
+      updatedCategoryData
+    }
+  ) {
+    const response = await categoryService.update({
+      categoryId,
+      updatedCategoryData
+    });
 
     commit(mutationTypes.UPDATE_CATEGORY, response.data)
   }

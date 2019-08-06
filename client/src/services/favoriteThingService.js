@@ -7,7 +7,8 @@ const favoriteThingService = {
   update({ favoriteThingId, updatedFavoriteThingData }) {
     return http.patch(
       `/favorite-things/${favoriteThingId}/`,
-      updatedFavoriteThingData)
+      updatedFavoriteThingData
+    )
   },
   delete({ favoriteThingId }) {
     return http.delete( `/favorite-things/${favoriteThingId}/`)

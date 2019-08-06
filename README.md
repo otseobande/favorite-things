@@ -8,8 +8,6 @@ The project is divided into two: the client and the server. The client section i
 
 ### Installation
 
-T
-
 To install the client dependencies, navigate to the client folder
 
 ```

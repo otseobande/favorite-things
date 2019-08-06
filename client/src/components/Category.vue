@@ -149,7 +149,12 @@ import Modal from './Modal.vue';
 import CloseIcon from './CloseIcon.vue'
 
 export default {
-  props: ['category'],
+  props: {
+    category: {
+      required: true,
+      type: Object
+    }
+  },
   components: {
     FavoriteThing,
     draggable,
@@ -206,7 +211,7 @@ export default {
     },
     handleCategoryNameClick () {
       this.edittingCategoryName = true;
-      setTimeout(() => this.$refs.updateCategoryNameInput.focus(), 100);
+      setTimeout(this.$refs.updateCategoryNameInput.focus, 100);
     },
     async updateCategoryName() {
       if (this.category.name !== this.updatedCategory.name) {
@@ -228,10 +233,8 @@ export default {
           });
         }
       } catch (error) {
-        if (error.response.status === 400) {
-          if (error.response.data.name) {
-            toast(error.response.data.name[0], 'error');
-          }
+        if (error.response.status === 400 && error.response.data.name) {
+          toast(error.response.data.name[0], 'error');
         }
       } finally {
         this[actionTypes.DELETE_DUMMY_CATEGORY]();

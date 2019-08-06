@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoriteThing component should match snapshot 1`] = `
+<div>
+  <div class="
+      w-full
+      mt-2
+      bg-white
+      rounded
+      text-gray-700
+      p-3
+      cursor-pointer
+      hover:shadow-2xl
+      hover:bg-gray-200
+      flex
+      flex-row
+      justify-between
+    "><span class="m-0 inline capitalize font-bold">
+      1. Test thing
+    </span> <button class="p-1 text-center"><img src="../assets/cancel.svg" width="10"></button></div>
+  <t-modal-stub clicktoclose="true" esctoclose="true" width="600" height="300" pivoty="0.1" baseclass="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed" overlayclass="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-black opacity-75" containerclass="z-50 relative p-3 mx-auto my-0 max-w-full" wrapperclass="bg-white rounded shadow-lg border flex flex-col overflow-hidden" bodyclass="p-6 flex-grow" headerclass="px-6 py-3 text-xl border-b" footerclass="px-6 py-3 border-t" closeiconclass="text-gray-300 w-8 right-0 mt-2 mr-6 absolute">
+    <div class="text-gray-700 flex flex-col">
+      <div class="text-2xl capitalize font-bold flex items-center"><span>Test thing</span> <button class="ml-3 border rounded text-sm px-1 text-gray-700 hover:bg-gray-200 flex items-center"><span>Edit</span>
+          <pencil-stub class="h-3 w-3 ml-1 inline fill-current"></pencil-stub></button></div> <small class="text-gray-600">in category Test category</small>
+      <div class="mt-4">
+        <h3 class="text-lg font-bold">Description</h3>
+        <div>
+          <div class="text-sm italic text-gray-500">
+            Not provided
+          </div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <h3 class="text-lg font-bold">Ranking</h3>
+        <p>
+          1st
+        </p>
+      </div>
+      <div></div>
+      <div class="flex flex-col mt-3 text-sm">
+        <t-button-stub tagname="button" type="button" size="sm" activeclass="router-link-active" exactactiveclass="router-link-exact-active" baseclass="border block rounded inline-flex items-center justify-center" defaultclass="bg-white border-gray-400 hover:bg-gray-100 hover:border-gray-500" primaryclass="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600" secondaryclass="border-blue-500 text-blue-500 bg-white hover:border-blue-600 hover:text-blue-600 hover:bg-white" tertiaryclass="border block underline text-blue-500 border-transparent bg-transparent hover:text-blue-600" successclass="text-white bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600" dangerclass="text-white bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600" warningclass="text-yellow-900 bg-yellow-500 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600" disabledclass="cursor-not-allowed opacity-75" defaultsizeclass="px-6 py-3" largesizeclass="px-8 py-4 text-lg" smallsizeclass="px-4 py-2 text-sm"><span>View activities</span></t-button-stub>
+        <!---->
+      </div>
+    </div>
+  </t-modal-stub>
+  <t-modal-stub clicktoclose="true" esctoclose="true" width="600" height="300" pivoty="0.1" baseclass="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed" overlayclass="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-black opacity-75" containerclass="z-50 relative p-3 mx-auto my-0 max-w-full" wrapperclass="bg-white rounded shadow-lg border flex flex-col overflow-hidden" bodyclass="p-6 flex-grow" headerclass="px-6 py-3 text-xl border-b" footerclass="px-6 py-3 border-t" closeiconclass="text-gray-300 w-8 right-0 mt-2 mr-6 absolute">
+    <div class="text-gray-700">
+      <h2 class="text-lg mt-16 text-center">
+        Add you sure you want to delete Test thing?
+      </h2>
+      <div class="mt-6 flex justify-center">
+        <div>
+          <t-button-stub tagname="button" type="submit" variant="danger" size="sm" activeclass="router-link-active" exactactiveclass="router-link-exact-active" baseclass="border block rounded inline-flex items-center justify-center" defaultclass="bg-white border-gray-400 hover:bg-gray-100 hover:border-gray-500" primaryclass="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600" secondaryclass="border-blue-500 text-blue-500 bg-white hover:border-blue-600 hover:text-blue-600 hover:bg-white" tertiaryclass="border block underline text-blue-500 border-transparent bg-transparent hover:text-blue-600" successclass="text-white bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600" dangerclass="text-white bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600" warningclass="text-yellow-900 bg-yellow-500 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600" disabledclass="cursor-not-allowed opacity-75" defaultsizeclass="px-6 py-3" largesizeclass="px-8 py-4 text-lg" smallsizeclass="px-4 py-2 text-sm" class="mr-2 font-bold">
+            Delete
+          </t-button-stub>
+          <t-button-stub tagname="button" type="button" size="sm" activeclass="router-link-active" exactactiveclass="router-link-exact-active" baseclass="border block rounded inline-flex items-center justify-center" defaultclass="bg-white border-gray-400 hover:bg-gray-100 hover:border-gray-500" primaryclass="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600" secondaryclass="border-blue-500 text-blue-500 bg-white hover:border-blue-600 hover:text-blue-600 hover:bg-white" tertiaryclass="border block underline text-blue-500 border-transparent bg-transparent hover:text-blue-600" successclass="text-white bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600" dangerclass="text-white bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600" warningclass="text-yellow-900 bg-yellow-500 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600" disabledclass="cursor-not-allowed opacity-75" defaultsizeclass="px-6 py-3" largesizeclass="px-8 py-4 text-lg" smallsizeclass="px-4 py-2 text-sm" class="font-bold">
+            Cancel
+          </t-button-stub>
+        </div>
+      </div>
+    </div>
+  </t-modal-stub>
+</div>
+`;

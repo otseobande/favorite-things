@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewFavoriteThing component should match snapshot 1`] = `
+<div class="text-gray-700">
+  <h2 class="text-lg font-bold"><span>
+        Add new favorite <span class="lowercase">Test category</span></span></h2>
+  <form class="mt-5">
+    <div><label class="font-bold">Title</label>
+      <t-input-stub name="title" value="" placeholder="Enter favorite Test category title" type="text" baseclass="border block rounded" defaultstatusclass="bg-white" errorstatusclass="border-red-300 bg-red-100" successstatusclass="border-green-300 bg-green-100" warningstatusclass="border-yellow-400 bg-yellow-100" disabledclass="bg-gray-100 cursor-not-allowed opacity-75" defaultsizeclass="p-3" largesizeclass="p-4 text-lg" smallsizeclass="p-2 text-sm" class="h-10 w-full"></t-input-stub>
+      <!---->
+    </div>
+    <div class="mt-2"><label class="font-bold">Description </label> <span class="text-sm italic text-gray-500">(optional)</span>
+      <t-textarea-stub name="description" value="" placeholder="Describe favorite Test category" rows="2" wrap="soft" baseclass="border block rounded" defaultstatusclass="bg-white" errorstatusclass="border-red-300 bg-red-100" successstatusclass="border-green-300 bg-green-100" warningstatusclass="border-yellow-400 bg-yellow-100" disabledclass="bg-gray-100 cursor-not-allowed opacity-75" defaultsizeclass="p-3" largesizeclass="p-4 text-lg" smallsizeclass="p-2 text-sm" class="w-full"></t-textarea-stub>
+      <!---->
+    </div>
+    <div class="mt-2"><label class="font-bold">Ranking</label>
+      <div>
+        <t-input-stub name="ranking" value="1" max="1" min="1" type="number" baseclass="border block rounded" defaultstatusclass="bg-white" errorstatusclass="border-red-300 bg-red-100" successstatusclass="border-green-300 bg-green-100" warningstatusclass="border-yellow-400 bg-yellow-100" disabledclass="bg-gray-100 cursor-not-allowed opacity-75" defaultsizeclass="p-3" largesizeclass="p-4 text-lg" smallsizeclass="p-2 text-sm" class="h-10 mr-0 inline"></t-input-stub> <small class="ml-2 capitalize">Rank as favorite Test category</small>
+      </div>
+      <!---->
+    </div>
+    <additionalinformation-stub currentmetadata="" editting="true"></additionalinformation-stub>
+    <div class="mt-8 flex">
+      <t-button-stub tagname="button" type="submit" variant="primary" size="sm" activeclass="router-link-active" exactactiveclass="router-link-exact-active" baseclass="border block rounded inline-flex items-center justify-center" defaultclass="bg-white border-gray-400 hover:bg-gray-100 hover:border-gray-500" primaryclass="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600" secondaryclass="border-blue-500 text-blue-500 bg-white hover:border-blue-600 hover:text-blue-600 hover:bg-white" tertiaryclass="border block underline text-blue-500 border-transparent bg-transparent hover:text-blue-600" successclass="text-white bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600" dangerclass="text-white bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600" warningclass="text-yellow-900 bg-yellow-500 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600" disabledclass="cursor-not-allowed opacity-75" defaultsizeclass="px-6 py-3" largesizeclass="px-8 py-4 text-lg" smallsizeclass="px-4 py-2 text-sm" class="mr-2 font-bold"><span>
+            Save favorite<span class="lowercase">&nbsp;Test category</span></span></t-button-stub>
+      <t-button-stub tagname="button" type="button" size="sm" activeclass="router-link-active" exactactiveclass="router-link-exact-active" baseclass="border block rounded inline-flex items-center justify-center" defaultclass="bg-white border-gray-400 hover:bg-gray-100 hover:border-gray-500" primaryclass="text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600" secondaryclass="border-blue-500 text-blue-500 bg-white hover:border-blue-600 hover:text-blue-600 hover:bg-white" tertiaryclass="border block underline text-blue-500 border-transparent bg-transparent hover:text-blue-600" successclass="text-white bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600" dangerclass="text-white bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600" warningclass="text-yellow-900 bg-yellow-500 border-yellow-500 hover:bg-yellow-600 hover:border-yellow-600" disabledclass="cursor-not-allowed opacity-75" defaultsizeclass="px-6 py-3" largesizeclass="px-8 py-4 text-lg" smallsizeclass="px-4 py-2 text-sm" class="font-bold">
+        Cancel
+      </t-button-stub>
+    </div>
+  </form>
+</div>
+`;

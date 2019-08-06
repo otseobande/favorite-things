@@ -11,7 +11,7 @@ axios.interceptors.response.use(
     if (!error.response) {
       toast('Network error! Please check your internet connection.', 'error');
     }
-    
+
     return Promise.reject(error);
   }
 );
