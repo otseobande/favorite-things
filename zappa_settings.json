@@ -5,6 +5,6 @@
         "project_name": "favorite-things",
         "runtime": "python3.7",
         "s3_bucket": "favorite-things",
-        "slim_handle": true
+        "slim_handler": true
     }
 }

@@ -3,7 +3,7 @@
 
 An application to help you track your favorite things.
 
-[View application](https://favorite-things.netlify.com)
+[Hosted Application](https://favorite-things.netlify.com)
 
 ## Getting Started
 
