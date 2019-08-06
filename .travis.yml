@@ -30,7 +30,7 @@ script:
 
 deploy:
   provider: script
-  script: bash deploy.sh
+  script: bash -c "echo ${env_file} | base64 -d > .env && zappa update"
   on:
     branch: setup-deployment
 
