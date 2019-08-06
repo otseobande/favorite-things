@@ -21,12 +21,12 @@ install:
   - pip install -r requirements.txt
   - pip install codecov
 
-before_script:
-  - psql -c 'create database favorite_things_test;' -U postgres
+# before_script:
+#   - psql -c 'create database favorite_things_test;' -U postgres
 
-script:
-  - pytest
-  - cd ./client && npm install && npm run test -- -u
+# script:
+#   - pytest
+#   - cd ./client && npm install && npm run test -- -u
 
 deploy:
   provider: script
