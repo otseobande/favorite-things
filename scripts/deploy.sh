@@ -8,6 +8,6 @@ find . -name '*.pyc' -delete
 
 rm -rf htmlcov .coverage ./client/coverage
 
-pip uninstall -y codecov coverage
+pip uninstall -y codecov coverage django-nose pytest
 
 zappa update
