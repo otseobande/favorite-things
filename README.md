@@ -1,5 +1,5 @@
 # Favorite Things! 🙂
-
+[![Build Status](https://travis-ci.com/otseobande/favorite-things.svg?branch=master)](https://travis-ci.com/otseobande/favorite-things) [![codecov](https://codecov.io/gh/otseobande/favorite-things/branch/master/graph/badge.svg)](https://codecov.io/gh/otseobande/favorite-things)
 An application to help you track your favorite things.
 
 ## Getting Started
