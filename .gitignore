@@ -114,4 +114,4 @@ venv.bak/
 .vscode
 
 # zappa zip files
-.zip
+*.zip
