@@ -203,9 +203,13 @@ export default {
 
         if (index < arr.length - 2) {
           seperator = ', ';
-        } else if (index === arr.length - 2) {
+        }
+
+        if (index === arr.length - 2) {
           seperator = ' and ';
-        } else if (index === arr.length - 1) {
+        }
+
+        if (index === arr.length - 1) {
           seperator = '.'
         }
 

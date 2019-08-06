@@ -1,1 +1,15 @@
 
+{
+  "name": "Otse Obande",
+  "hobbies": [
+    "playing guitar",
+    "coding"
+  ],
+  "traits": {
+    "focused": true,
+    "creative": true,
+    "communicator": true,
+    "pessimistic": false
+  },
+  "favorite_color": "Blue"
+}

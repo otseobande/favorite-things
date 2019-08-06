@@ -1,0 +1,9 @@
+{
+    "staging": {
+        "django_settings": "favoritethings.settings",
+        "profile_name": null,
+        "project_name": "favorite-things",
+        "runtime": "python3.7",
+        "s3_bucket": "favorite-things"
+    }
+}
