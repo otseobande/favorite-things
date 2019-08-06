@@ -52,5 +52,6 @@ cd ./client && npm run server
 
 ![Entity relationship diagram](https://res.cloudinary.com/otse/image/upload/v1565093595/entity_relationship_ythju7.png)
 
+### API Documentation
 
-
+- [Postman documentation](https://documenter.getpostman.com/view/3424044/SVYrse29?version=latest)
