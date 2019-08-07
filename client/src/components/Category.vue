@@ -46,13 +46,17 @@
         </button>
       </div>
       <div v-else>
-        <label class="text-sm">Category name</label>
+        <label class="text-sm">
+          Category name
+          <Spinner class="fill-current w-5 inline h-5" v-if="savingCategory"/>
+        </label>
         <t-input
           v-model="newCategoryName"
           class="h-8 bg-white border-white text-gray-800 w-full text-sm"
           placeholder="Enter new category name"
           @blur="handleNewCategoryInputBlur"
           @keyup.enter="$event.target.blur()"
+          :disabled="savingCategory"
           ref="newCategoryInput"
           autofocus
         />
@@ -117,9 +121,13 @@
               size="sm"
               class="mr-2 font-bold"
               type='submit'
+              :disabled="deleting"
               @click="deleteCategory"
             >
-              <span>
+              <span v-if="deleting">
+                <img src="../assets/spinner.svg" width="25">
+              </span>
+              <span v-else>
                 Delete
               </span>
             </t-button>
@@ -147,6 +155,7 @@ import FavoriteThing from './FavoriteThing.vue';
 import NewFavoriteThing from './NewFavoriteThing.vue';
 import Modal from './Modal.vue';
 import CloseIcon from './CloseIcon.vue'
+import Spinner from './Spinner';
 
 export default {
   props: {
@@ -160,7 +169,8 @@ export default {
     draggable,
     NewFavoriteThing,
     Modal,
-    CloseIcon
+    CloseIcon,
+    Spinner
   },
   data() {
     return {
@@ -178,7 +188,9 @@ export default {
       updatedCategory: {
         name: this.category.name
       },
-      edittingCategoryName: false
+      edittingCategoryName: false,
+      savingCategory: false,
+      deleting: false
     }
   },
   methods: {
@@ -228,6 +240,7 @@ export default {
     async handleNewCategoryInputBlur() {
       try{
         if(this.newCategoryName) {
+          this.savingCategory = true;
           await this[actionTypes.ADD_CATEGORY]({
             name: this.newCategoryName
           });
@@ -237,6 +250,7 @@ export default {
           toast(error.response.data.name[0], 'error');
         }
       } finally {
+        this.savingCategory = false;
         this[actionTypes.DELETE_DUMMY_CATEGORY]();
       }
     },
@@ -246,11 +260,12 @@ export default {
     closeConfirmDeleteModal() {
       this.$refs.categoryDeleteModal.hide()
     },
-    deleteCategory() {
-      this.$refs.categoryDeleteModal.hide();
-      return this[actionTypes.DELETE_CATEGORY]({
+    async deleteCategory() {
+      this.deleting = true;
+      await this[actionTypes.DELETE_CATEGORY]({
         categoryId: this.category.id
       });
+      this.deleting = false;
     },
   },
   computed: {

@@ -111,9 +111,13 @@
               size="sm"
               class="mr-2 font-bold"
               type='submit'
+              :disabled="deleting"
               @click="deleteFavoriteThing"
             >
-              Delete
+              <span v-if="deleting">
+                <img src="../assets/spinner.svg" width="25">
+              </span>
+              <span v-else>Delete</span>
             </t-button>
             <t-button size="sm" class="font-bold" @click="closeConfirmDeleteModal">
               Cancel
@@ -162,7 +166,8 @@ export default {
     return {
       showConfirmDeleteModal: false,
       editting: false,
-      viewActivities: false
+      viewActivities: false,
+      deleting: false
     }
   },
   components: {
@@ -187,11 +192,11 @@ export default {
       this.editting = false;
     },
     async deleteFavoriteThing(){
-      this.closeConfirmDeleteModal();
+      this.deleting = true;
       await this[actionTypes.DELETE_FAVORITE_THING]({
         favoriteThingId: this.favoriteThing.id
       });
-
+      this.deleting = false;
       toast('Favorite thing deleted successfully!');
     },
     getChangesString(changes) {
