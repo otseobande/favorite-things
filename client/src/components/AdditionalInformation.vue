@@ -3,7 +3,7 @@
     <label class="font-bold">Additional information</label>
     <span class="text-sm italic text-gray-500 ml-1">(optional)</span>
     <div class="mt-1">
-      <div class="flex">
+      <div class="flex" v-if="metadata.length > 0">
         <div class="mr-1">
           <label class="text-sm mr-16">Type</label>
         </div>
@@ -62,7 +62,7 @@
 
 <script>
 import CloseIcon from './CloseIcon.vue';
-import TagsInput from '@voerro/vue-tagsinput/dist/voerro-vue-tagsinput.js';
+import TagsInput from '@voerro/vue-tagsinput/src/VoerroTagsInput.vue';
 
 export default {
   props: {

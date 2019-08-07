@@ -74,7 +74,7 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
     },
     "transformIgnorePatterns": [
-      "<rootDir>/node_modules/"
+      "<rootDir>/node_modules/(?!@voerro)"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
@@ -83,6 +83,10 @@
       "!**/coverage/**",
       "!src/store/index.js",
       "!src/main.js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "dist"
     ],
     "coverageReporters": [
       "html",
