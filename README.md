@@ -49,7 +49,7 @@ python manage.py runserver
 Start client server
 
 ```bash
-cd ./client && npm run server
+cd ./client && npm run serve
 ```
 
 ## Entity relationship
