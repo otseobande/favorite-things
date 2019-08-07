@@ -117,7 +117,6 @@ describe('FavoriteThing component', () => {
       wrapper.vm[actionTypes.DELETE_FAVORITE_THING] = jest.fn();
 
       await wrapper.vm.deleteFavoriteThing();
-      expect(wrapper.vm.closeConfirmDeleteModal).toBeCalled()
       expect(wrapper.vm[actionTypes.DELETE_FAVORITE_THING]).toBeCalledWith(
         {
           favoriteThingId: wrapper.vm.favoriteThing.id

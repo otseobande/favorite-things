@@ -255,7 +255,6 @@ describe('Category component', () => {
 
       wrapper.vm.deleteCategory()
 
-      expect(wrapper.vm.$refs.categoryDeleteModal.hide).toBeCalled()
       expect(wrapper.vm[actionTypes.DELETE_CATEGORY]).toBeCalledWith({
         categoryId: wrapper.vm.category.id
       })
