@@ -60,6 +60,14 @@ cd ./client && npm run serve
 
 - [Postman documentation](https://documenter.getpostman.com/view/3424044/SVYrse29?version=latest)
 
+## Technologies used
+
+- [Django](https://www.djangoproject.com/)
+- [Django Rest Framework](https://www.django-rest-framework.org/)
+- [VueJS](https://vuejs.org/)
+- [Vuex](https://vuex.vuejs.org/)
+- [Tailwindcss](https://tailwindcss.com)
+
 ## Deployment Process
 
 The frontend application (VueJs) is deployed using [Netlify](https://netlify.com). Netlify handles the build and deployment for the Vue app.
