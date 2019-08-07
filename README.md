@@ -5,6 +5,8 @@ An application to help you track your favorite things.
 
 [Hosted Application](https://favorite-things.netlify.com)
 
+![Screenshot](https://res.cloudinary.com/otse/image/upload/v1565183640/Screen_Shot_2019-08-07_at_2.11.20_PM_sz8wyu.png)
+
 ## Getting Started
 
 The project is divided into two: the client and the server. The client section is located within the `client` folder and the server files are kept in the root directory
