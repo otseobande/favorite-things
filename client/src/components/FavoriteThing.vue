@@ -81,7 +81,11 @@
           </div>
         </div>
         <div class="flex flex-col mt-3 text-sm">
-          <t-button size="sm" @click="viewActivities = !viewActivities">
+          <t-button
+            size="sm"
+            v-if="updateHistory.length > 0"
+            @click="viewActivities = !viewActivities"
+          >
             <span v-if="viewActivities">Close activities</span>
             <span v-else>View activities</span>
           </t-button>
