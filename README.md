@@ -50,10 +50,18 @@ Start client server
 cd ./client && npm run server
 ```
 
-### Entity relationship
+## Entity relationship
 
 ![Entity relationship diagram](https://res.cloudinary.com/otse/image/upload/v1565093595/entity_relationship_ythju7.png)
 
-### API Documentation
+## API Documentation
 
 - [Postman documentation](https://documenter.getpostman.com/view/3424044/SVYrse29?version=latest)
+
+## Deployment Process
+
+The frontend application (VueJs) is deployed using [Netlify](https://netlify.com). Netlify handles the build and deployment for the Vue app.
+
+The backend is deployed on [AWS Lambda](https://aws.amazon.com/lambda/) using [Zappa](https://github.com/Miserlou/Zappa).
+
+Deployment is automated with Travis CI build stages.
